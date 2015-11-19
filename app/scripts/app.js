@@ -14,15 +14,11 @@ angular.module('todoApp', ['ngRoute','AdalAngular'])
         templateUrl: "/static/views/UserData.html",
     }).otherwise({ redirectTo: "/Home" });
 
-    adalProvider.init(
-        {
-            instance: 'https://login.microsoftonline.com/', 
-            tenant: 'common',
-            clientId: '67227e4e-f48b-4f6b-9721-d4cc283d32e9',
-            scopes: [],
-            //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
-        },
-        $httpProvider
-        );
+    adalProvider.init({
+        instance: 'https://login.microsoftonline.com/', 
+        tenant: 'common',
+        clientId: '67227e4e-f48b-4f6b-9721-d4cc283d32e9',
+        //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
+    }, $httpProvider);
    
 }]);
