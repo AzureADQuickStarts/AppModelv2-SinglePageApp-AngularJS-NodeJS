@@ -1,0 +1,16 @@
+﻿<div>
+    <h3>
+        Profile Info
+    </h3>
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+        <tr ng-repeat="(key, value) in userInfo.profile">
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+    </table>
+</div>

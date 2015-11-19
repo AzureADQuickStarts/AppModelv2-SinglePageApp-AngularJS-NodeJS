@@ -1,0 +1,54 @@
+{
+  "name": "adal-angular-experimental",
+  "homepage": "https://github.com/AzureAD/azure-activedirectory-library-for-js#dev_convergence",
+  "authors": [
+    "MSOpentech"
+  ],
+  "description": "Azure Active Directory Client Library for js",
+  "main": [
+    "./lib/adal.js",
+    "./lib/adal-angular.js"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "adal",
+    "oauth",
+    "active",
+    "directory",
+    "azure"
+  ],
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16"
+  },
+  "devDependencies": {
+    "angular-resource": "~1.2.26",
+    "angular-mocks": "~1.2.16",
+    "jasmine": "2.0.0",
+    "angular-route": "~1.2.26"
+  },
+  "_release": "7d706d5393",
+  "_resolution": {
+    "type": "branch",
+    "branch": "experimental",
+    "commit": "7d706d5393ef9474fa92f24199e994327e2e1e52"
+  },
+  "_source": "git://github.com/AzureAD/azure-activedirectory-library-for-js.git",
+  "_target": "experimental",
+  "_originalSource": "adal-angular",
+  "_direct": true
+}
