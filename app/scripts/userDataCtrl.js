@@ -1,5 +1,5 @@
 ﻿'use strict';
 angular.module('todoApp')
-.controller('userDataCtrl', ['$scope', 'adalAuthenticationService', function ($scope, adalService) {
 
-}]);
+// Load ADAL for use in view
+.controller('userDataCtrl', ['$scope', 'adalAuthenticationService', function ($scope, adalService) {}]);

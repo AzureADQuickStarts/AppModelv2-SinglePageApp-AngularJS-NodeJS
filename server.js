@@ -1,31 +1,34 @@
-// Packages
+// Load Packages
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var uuid = require('uuid');
 var config = require('./config');
 var passport = require('passport');
-var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 
-// POST requests
+// Configure requests parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Authentication
-var options = {
-    identityMetadata: config.creds.identityMetadata,
-    audience: config.creds.audience,
-	validateIssuer: false,
-};
+// Pull in the Azure AD bearer passport strategy
+var passport = require('passport');
+var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
+
+// This object is used for in-memory data storage, instead of a database.
+// Each time you run the server, you will get a fresh, empty list.
+var tasks = [];
+
+// Load passport and configure it to use Azure AD Bearer auth
 app.use(passport.initialize());
-passport.use(new OIDCBearerStrategy(options, function (token, done) {
+passport.use(new OIDCBearerStrategy({
+    "identityMetadata": config.creds.identityMetadata,
+    "audience": config.creds.audience,
+	"validateIssuer": false,
+}, function (token, done) {
 	return done(null, token, null);
 }));
 
-// In-Memory Data Storage
-var tasks = [];
-
-// Routes
+// Set up API Routes, using Azure AD bearer auth
 var router = express.Router();
 router.route('/api/tasks')
 	.post(passport.authenticate('oauth-bearer', { session: false }), function(req, res) {
@@ -36,6 +39,8 @@ router.route('/api/tasks')
 		var task = {
 			"ID": uuid.v4(),
 			"Description": req.body.Description,
+			
+			// Access user info in the token via passport's user object
 			"Owner": req.user.sub,
 		};
 		tasks.push(task);
@@ -101,10 +106,12 @@ router.route('/api/tasks/:task_id')
 		}
 	});
 
+// Serve the single page in our SPA
 router.route('/').get(function (req, res) {
 	res.sendFile(__dirname + '/index.html');
 })
 
+// Use the API routes from above, & use /static for serving html & js
 app.use(router);
 app.use('/static', express.static('app'));
 app.use(function(req, res, next) {
@@ -116,5 +123,3 @@ app.use(function(req, res, next) {
 var port = process.env.port || 8080;
 var server = app.listen(port);
 console.log('To Do List sample app listening at on port', port);
-
-// https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=67227e4e-f48b-4f6b-9721-d4cc283d32e9&response_type=id_token&response_mode=fragment&scope=openid&nonce=12345678

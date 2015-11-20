@@ -27,6 +27,8 @@
                     <li ng-class="{ active: isActive('/TodoList') }"><a href="#/TodoList">Todo List</a></li>
                     <li ng-class="{ active: isActive('/UserData') }"><a href="#/UserData" ng-show="userInfo.isAuthenticated">User</a></li>
                 </ul>
+                
+                <!--Use the ADAL userInfo object to check if the user is signed into the app-->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
                     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
@@ -43,7 +45,7 @@
                 <div class="page-header">
                     <h1>Todo List</h1>
                 </div>
-                <p>This sample demonstrates how to take advantage of ADAL JS for adding Azure AD authentication to your AngularJS apps.</p>
+                <p>This sample demonstrates how to take advantage of adal.js for adding authentication to your AngularJS apps with both personal and work accounts.</p>
             </div>
         </div>
         <div class="row">
@@ -53,6 +55,8 @@
                 </div>
             </div>
         </div>
+        
+        <!--Load scripts, including Angular & ADAL-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="static/lib/angular/angular.min.js"></script>
         <script src="static/lib/angular-route/angular-route.min.js"></script>

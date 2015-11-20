@@ -8,6 +8,8 @@
             <th>Property</th>
             <th>Value</th>
         </tr>
+        
+        <!--Get the user's profile information from the ADAL userInfo object-->
         <tr ng-repeat="(key, value) in userInfo.profile">
             <td>{{key}}</td>
             <td>{{value}}</td>
