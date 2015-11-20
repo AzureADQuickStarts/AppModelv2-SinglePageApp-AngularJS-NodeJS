@@ -28,7 +28,7 @@
                     <li ng-class="{ active: isActive('/UserData') }"><a href="#/UserData" ng-show="userInfo.isAuthenticated">User</a></li>
                 </ul>
                 
-                <!--Use the ADAL userInfo object to check if the user is signed into the app-->
+                <!--TODO: Use the ADAL userInfo object to check if the user is signed into the app-->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
                     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
@@ -61,8 +61,9 @@
         <script src="static/lib/angular/angular.min.js"></script>
         <script src="static/lib/angular-route/angular-route.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="static/lib/adal-angular-experimental/dist/adal.min.js"></script>
-        <script src="static/lib/adal-angular-experimental/dist/adal-angular.min.js"></script>
+        
+        <!--TODO: Load adal.js-->
+        
         <script src="static/scripts/app.js"></script>
         <script src="static/scripts/homeCtrl.js"></script>
         <script src="static/scripts/userDataCtrl.js"></script>
