@@ -27,7 +27,7 @@
                     <li ng-class="{ active: isActive('/TodoList') }"><a href="#/TodoList">Todo List</a></li>
                     <li ng-class="{ active: isActive('/UserData') }"><a href="#/UserData" ng-show="userInfo.isAuthenticated">User</a></li>
                 </ul>
-                
+
                 <!--Use the ADAL userInfo object to check if the user is signed into the app-->
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
@@ -55,7 +55,8 @@
                 </div>
             </div>
         </div>
-        
+      </div>
+
         <!--Load scripts, including Angular & ADAL-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="static/lib/angular/angular.min.js"></script>
